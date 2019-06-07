@@ -1,0 +1,23 @@
+﻿@using MyBook.UL.Models
+@using MyBook.UL.HtmlHelpers
+@model ArticleIndexViewModels
+
+
+
+@{
+    ViewBag.Title = "Главная";
+}
+
+
+@foreach (var art in @Model.Articles)
+{
+    if (art.Publication == true)
+    {
+        @Html.Partial("ArticleAnnotation", art)
+    }
+}
+
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
+</div>
